@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+you firstly need to run backend on the local to get data , for data regarding run backend , look readme in the backend folder . To run this just if node modules is not installed , install it with npm install ,then type npm run dev  
+
+
+his is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
