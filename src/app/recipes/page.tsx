@@ -7,9 +7,18 @@ import { useGetRecipesQuery } from "@/lib/services/recipeApi"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 
-
 export default function RecipesPage() {
-    
+    return (
+        <div className="container mx-auto py-8 px-4">
+            <h1 className="text-3xl font-bold mb-8">Recipes</h1>
+            <Suspense fallback={<RecipeListSkeleton />}>
+                <RecipeList />
+            </Suspense>
+        </div>
+    )
+}
+
+function RecipeList() {
     const searchParams = useSearchParams()
 
     const params = {
@@ -56,9 +65,7 @@ export default function RecipesPage() {
     }
 
     return (
-        <div className="container mx-auto py-8 px-4">
-            <h1 className="text-3xl font-bold mb-8">Recipes</h1>
-
+        <>
             <RecipeFilters activeFilters={activeFilters} />
 
             {isLoading ? (
@@ -80,6 +87,6 @@ export default function RecipesPage() {
                     <p className="text-muted-foreground">Try adjusting your filters or search for something else.</p>
                 </div>
             )}
-        </div>
+        </>
     )
 }
