@@ -1,12 +1,15 @@
 "use client"
 
-import { useSearchParams } from "next/navigation"
 import { RecipeCard } from "@/components/recipe-card"
 import { RecipeFilters } from "@/components/recipe-filters"
 import { RecipeListSkeleton } from "@/components/recipe-list-skeleton"
 import { useGetRecipesQuery } from "@/lib/services/recipeApi"
+import { useSearchParams } from "next/navigation"
+import { Suspense } from "react"
+
 
 export default function RecipesPage() {
+    
     const searchParams = useSearchParams()
 
     const params = {

@@ -1,4 +1,5 @@
 "use client"
+import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
@@ -36,9 +37,27 @@ export function RecipeFilters({ activeFilters }: RecipeFiltersProps) {
     const { data: areasData, isLoading: areasLoading } = useGetAreasQuery()
     const { data: ingredientsData, isLoading: ingredientsLoading } = useGetIngredientsQuery()
 
-    const categories = categoriesData?.meals?.map((item: CategoryItem) => item.strCategory) || []
-    const areas = areasData?.meals?.map((item: AreaItem) => item.strArea) || []
-    const ingredients = ingredientsData?.meals?.map((item: IngredientItem) => item.strIngredient) || []
+    const [categories, setCategories] = useState<string[]>([])
+    const [areas, setAreas] = useState<string[]>([])
+    const [ingredients, setIngredients] = useState<string[]>([])
+
+    useEffect(() => {
+        if (categoriesData?.meals) {
+            setCategories(categoriesData.meals.map((item: CategoryItem) => item.strCategory))
+        }
+    }, [categoriesData])
+
+    useEffect(() => {
+        if (areasData?.meals) {
+            setAreas(areasData.meals.map((item: AreaItem) => item.strArea))
+        }
+    }, [areasData])
+
+    useEffect(() => {
+        if (ingredientsData?.meals) {
+            setIngredients(ingredientsData.meals.map((item: IngredientItem) => item.strIngredient))
+        }
+    }, [ingredientsData])
 
     const loading = categoriesLoading || areasLoading || ingredientsLoading
 
