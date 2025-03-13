@@ -19,7 +19,7 @@ export interface SearchParams {
 
 export const recipeApi = createApi({
     reducerPath: "recipeApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api/" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://recipe-book-backend-k6m8gn2b7-agsins-projects.vercel.app/api" }),
     endpoints: (builder) => ({
         getRecipes: builder.query<Recipe[], SearchParams>({
             query: (params) => {
